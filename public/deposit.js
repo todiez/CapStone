@@ -5,6 +5,7 @@ function Deposit(){
   return (
     <Card
       //bgcolor="secondary"
+      bgcolor="light"
       txtcolor="black"
       header="Deposit"
       status={status}
