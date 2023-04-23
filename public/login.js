@@ -4,7 +4,8 @@ function Login(){
 
   return (
     <Card
-      bgcolor="secondary"
+      //bgcolor="secondary"
+      txtcolor="black"
       header="Login"
       status={status}
       body={show ? 
