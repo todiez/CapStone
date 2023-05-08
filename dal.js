@@ -61,8 +61,6 @@ function update(email, amount) {
                     err ? reject(err) : resolve(documents);
                 }
             );
-
-
     });
 }
 
