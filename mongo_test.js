@@ -1,12 +1,13 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb+srv://toby:fxBWC6WvJviWcElN@capstone.imbrztv.mongodb.net/?retryWrites=true&w=majority';
+let dbName = null;
  
 // connect to mongo
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
   console.log("Connected successfully to server");
 
     // database Name
-    const dbName = 'myproject';
+    //const dbName = 'myproject';
     const db = client.db(dbName);
 
     // new user
