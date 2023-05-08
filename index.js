@@ -35,7 +35,6 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
         });
 });
 
-
 // login user 
 app.get('/account/login/:email/:password', function (req, res) {
 
@@ -78,7 +77,6 @@ app.get('/account/findOne/:email', function (req, res) {
     });
 });
 
-
 // update - deposit/withdraw amount
 app.get('/account/update/:email/:amount', function (req, res) {
 
@@ -100,6 +98,16 @@ app.get('/account/all', function (req, res) {
             res.send(docs);
     });
 });
+
+app.get('/account', (req, res) => {
+    console.log("URL Testing");
+
+    dal.testing().
+        then((docs) => {
+            console.log(docs);
+            res.send(docs);
+    });
+})
 
 app.listen(port, () => {
     console.log('Running on port: ' + port);

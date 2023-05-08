@@ -75,4 +75,21 @@ function all() {
 }
 
 
-module.exports = { create, findOne, find, update, all };
+//DAL testing
+function testing() {
+    return new Promise( (resolve, reject) => {
+        console.log("INSIDE dal testing");
+
+        let docs = "AFTER inside DAL testing";
+        resolve(docs);
+        // const customers = db
+        //     .collection('users')
+        //     .find({})
+        //     .toArray(function(err, docs) {
+        //         err ? reject(err) : resolve(docs);
+        //     });
+    });    
+}
+
+
+module.exports = { create, findOne, find, update, all, testing };
