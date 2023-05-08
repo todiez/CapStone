@@ -14,7 +14,6 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client) {
 
 // create user account using the collection.insertOne function
 function create(name, email, password) {
-    // TODO: populate this function based off the video
     return new Promise((resolve, reject) => {
         const collection = db.collection('users');
         const doc = { name, email, password, balance: 0 };
@@ -65,7 +64,6 @@ function update(email, amount) {
 
 // return all users by using the collection.find method
 function all() {
-    // TODO: populate this function based off the video
     return new Promise((resolve, reject) => {
         const customers = db
             .collection('users')
