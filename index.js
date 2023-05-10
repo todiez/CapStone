@@ -99,14 +99,8 @@ app.get('/account/all', function (req, res) {
     });
 });
 
-app.get('/account/account', (req, res) => {
-    console.log("URL Testing");
-
-    dal.testing().
-        then((docs) => {
-            console.log(docs);
-            res.send(docs);
-    });
+app.get('/account/logout', (req, res) => {
+    res.send("logged out");
 })
 
 app.listen(port, () => {

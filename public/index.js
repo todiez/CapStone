@@ -1,22 +1,10 @@
-
 function Spa() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
   return (
     <HashRouter>
       <div>
-        <UserContext.Provider
-          value={{
-            users: [
-              {
-                name: "",
-                email: "",
-                password: "",
-                balance: 0,
-                IsLoggedIn: false
-              },
-            ],
-          }}
-        >
-         
+        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
           <NavBar />
           <div className="container" style={{ padding: "20px" }}>
             <Route path="/" exact component={Home} />
@@ -24,14 +12,10 @@ function Spa() {
             <Route path="/login/" component={Login} />
             <Route path="/deposit/" component={Deposit} />
             <Route path="/withdraw/" component={Withdraw} />
-            {/* <Route path="/transactions/" component={Transactions} /> */}
             <Route path="/balance/" component={Balance} />
             <Route path="/alldata/" component={AllData} />
-            {/* <Route path="/account/" component={Account} /> */}
           </div>
-     
-        </UserContext.Provider>
-        <NavBar />
+        </AuthContext.Provider>
       </div>
     </HashRouter>
   );

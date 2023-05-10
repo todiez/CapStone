@@ -1,6 +1,6 @@
 function Balance(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('Login for Balance');
+  const [status, setStatus] = React.useState('Email for Balance');
     
 
   return (
@@ -23,7 +23,7 @@ function BalanceMsg(props){
       className="btn btn-light" 
       onClick={() => {
         props.setShow(true);
-        props.setStatus('Login for Balance');
+        props.setStatus('Email for Balance');
       }}>
         Check balance again
     </button>

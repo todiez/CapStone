@@ -1,6 +1,6 @@
 function Home(){
   return (
-    <>
+  
     <Card
       txtcolor="black"
       bgcolor="light"
@@ -9,16 +9,6 @@ function Home(){
       text="You can move around using the navigation bar."
       body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
     />
-    <h1>gda</h1>
     
-    <Card
-      txtcolor="black"
-      bgcolor="light"
-      header="BadBank Landing Module"
-      title="Welcome to the bank"
-      text="You can move around using the navigation bar."
-      body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
-    />
-    </>
   );  
 }
