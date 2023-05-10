@@ -1,6 +1,6 @@
 function Balance(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');
+  const [status, setStatus] = React.useState('Login for Balance');
     
 
   return (
@@ -8,7 +8,7 @@ function Balance(){
       bgcolor="light"
       txtcolor="black"
       header="Balance"
-      status={status}
+      title={status}
       body={show ?
         <BalanceForm setShow={setShow} setStatus={setStatus}/> :
         <BalanceMsg setShow={setShow} setStatus={setStatus}/>}
@@ -18,12 +18,12 @@ function Balance(){
 
 function BalanceMsg(props){
   return(<>
-    <h5>Success</h5>
+    <br/>
     <button type="submit" 
       className="btn btn-light" 
       onClick={() => {
         props.setShow(true);
-        props.setStatus('');
+        props.setStatus('Login for Balance');
       }}>
         Check balance again
     </button>
@@ -41,29 +41,20 @@ function BalanceForm(props){
         try {
             console.log("inside TRY")
             const data = JSON.parse(text);
-            
             props.setShow(false);
             console.log(data.balance)
             setBalance(data.balance);
-            props.setStatus(data.balance);
+            props.setStatus("USD " + data.balance);
             console.log('JSON:', data);
-            
         } catch(err) {
             console.log("inside CATCH")
-            props.setStatus(text)
+            props.setStatus("User not found, please make sure you have entered the correct email address! Thank you.")
             console.log('err:', text);
         }
     });
   }
 
-  // function handle(){
-  //   fetch(`/account/findOne/${email}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data); 
-  //     console.log(data[0])           
-  // });
-  // }
+
 
   return (<>
 
@@ -72,8 +63,8 @@ function BalanceForm(props){
       className="form-control" 
       placeholder="Enter email" 
       value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
-
+      onChange={e => setEmail(e.currentTarget.value)}/>
+    <br/>
     <button type="submit" 
       className="btn btn-light" 
       onClick={handle}>
