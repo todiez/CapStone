@@ -1,3 +1,4 @@
+
 function Spa() {
   return (
     <HashRouter>
@@ -6,14 +7,16 @@ function Spa() {
           value={{
             users: [
               {
-                name: "abel",
-                email: "abel@mit.edu",
-                password: "secret",
-                balance: 100,
+                name: "",
+                email: "",
+                password: "",
+                balance: 0,
+                IsLoggedIn: false
               },
             ],
           }}
         >
+         
           <NavBar />
           <div className="container" style={{ padding: "20px" }}>
             <Route path="/" exact component={Home} />
@@ -26,6 +29,7 @@ function Spa() {
             <Route path="/alldata/" component={AllData} />
             {/* <Route path="/account/" component={Account} /> */}
           </div>
+     
         </UserContext.Provider>
         <NavBar />
       </div>

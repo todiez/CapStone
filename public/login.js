@@ -86,5 +86,5 @@ function LoginForm(props) {
 function Logincorner(props) {
  
   let show = true;
-  return <>{show ? <p>Paz@diez.cc</p> : <p>You are not logged in</p>}</>;
+  return <>{show ? <p>paz@diez.cc</p> : <p>You are not logged in</p>}</>;
 }

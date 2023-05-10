@@ -1,5 +1,6 @@
 function AllData(){
-    const [data, setData] = React.useState('');    
+    const [data, setData] = React.useState('');
+    const [balance, setBalance]    = React.useState(null);
 
     React.useEffect(() => {
         // fetch all accounts from API
@@ -7,7 +8,8 @@ function AllData(){
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                setData(JSON.stringify(data));                
+                setData(JSON.stringify(data));
+                setBalance(data[1].balance)                
             });
 
     }, []);
@@ -15,11 +17,7 @@ function AllData(){
     return (<>
         <h5>All Data in Store:</h5>
         {data}
-
-        <Card
-            header="test"
-            txtcolor="black"
-           
-        ></Card>
+        {balance}
+       
     </>);
 }

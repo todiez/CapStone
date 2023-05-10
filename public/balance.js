@@ -1,6 +1,7 @@
 function Balance(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');  
+  const [status, setStatus] = React.useState('');
+    
 
   return (
     <Card
@@ -13,7 +14,6 @@ function Balance(){
         <BalanceMsg setShow={setShow} setStatus={setStatus}/>}
     />
   )
-
 }
 
 function BalanceMsg(props){
@@ -39,17 +39,31 @@ function BalanceForm(props){
     .then(response => response.text())
     .then(text => {
         try {
+            console.log("inside TRY")
             const data = JSON.parse(text);
-            props.setStatus(text);
+            
             props.setShow(false);
-            setBalance(user.balance);
+            console.log(data.balance)
+            setBalance(data.balance);
+            props.setStatus(data.balance);
             console.log('JSON:', data);
+            
         } catch(err) {
+            console.log("inside CATCH")
             props.setStatus(text)
             console.log('err:', text);
         }
     });
   }
+
+  // function handle(){
+  //   fetch(`/account/findOne/${email}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data); 
+  //     console.log(data[0])           
+  // });
+  // }
 
   return (<>
 
