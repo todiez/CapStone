@@ -40,7 +40,6 @@ app.get('/account/login/:email/:password', function (req, res) {
 
     dal.find(req.params.email).
         then((user) => {
-
             // if user exists, check password
             if(user.length > 0){
                 if (user[0].password === req.params.password){
@@ -51,7 +50,7 @@ app.get('/account/login/:email/:password', function (req, res) {
                 }
             }
             else{
-                res.send('Login failed: user not found');
+                res.send('Login failed: user not found!');
             }
     });
     
@@ -99,9 +98,18 @@ app.get('/account/all', function (req, res) {
     });
 });
 
-app.get('/account/logout', (req, res) => {
-    res.send("logged out");
-})
+// Logout accounts
+app.get('/account/logout', function (req, res) {
+
+    console.log("inside logout on server")
+    dal.all().
+        then((docs) => {
+            console.log(docs);
+            res.send(docs);
+    });
+});
+
+
 
 app.listen(port, () => {
     console.log('Running on port: ' + port);
