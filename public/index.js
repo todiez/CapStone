@@ -2,9 +2,20 @@ function Spa() {
   return (
     <HashRouter>
       <div>
-        <NavBar/>        
-        <UserContext.Provider value={{users:[{name:'abel',email:'abel@mit.edu',password:'secret',balance:100}]}}>
-          <div className="container" style={{padding: "20px"}}>
+        <UserContext.Provider
+          value={{
+            users: [
+              {
+                name: "abel",
+                email: "abel@mit.edu",
+                password: "secret",
+                balance: 100,
+              },
+            ],
+          }}
+        >
+          <NavBar />
+          <div className="container" style={{ padding: "20px" }}>
             <Route path="/" exact component={Home} />
             <Route path="/CreateAccount/" component={CreateAccount} />
             <Route path="/login/" component={Login} />
@@ -16,12 +27,10 @@ function Spa() {
             {/* <Route path="/account/" component={Account} /> */}
           </div>
         </UserContext.Provider>
+        <NavBar />
       </div>
     </HashRouter>
   );
 }
 
-ReactDOM.render(
-  <Spa/>,
-  document.getElementById('root')
-);
+ReactDOM.render(<Spa />, document.getElementById("root"));

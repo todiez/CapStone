@@ -99,7 +99,7 @@ app.get('/account/all', function (req, res) {
     });
 });
 
-app.get('/account', (req, res) => {
+app.get('/account/account', (req, res) => {
     console.log("URL Testing");
 
     dal.testing().
