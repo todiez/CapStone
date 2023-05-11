@@ -64,6 +64,11 @@ function WithdrawForm(props) {
   const { email } = React.useContext(AuthContext);
 
   function handle() {
+    if (amount <= 0) {
+      alert("Please enter a positive amount.");
+      return;
+    }
+
     fetch(`/account/update/${email}/-${amount}`)
       .then((response) => response.text())
       .then((text) => {
