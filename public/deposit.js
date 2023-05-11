@@ -1,7 +1,7 @@
 function Deposit() {
   const [show, setShow] = React.useState(true);
   const [title, setTitle] = React.useState("Please Login first!");
-  const [status, setStatus] = React.useState('');  
+  const [status, setStatus] = React.useState("");
 
   const { isLoggedIn } = React.useContext(AuthContext);
 
@@ -17,9 +17,25 @@ function Deposit() {
       title={title}
       body={
         isLoggedIn ? (
-          <DepositForm setTitle={setTitle} setShow={setShow} setStatus={setStatus} />
+          show ? (
+            <DepositForm
+              setTitle={setTitle}
+              setShow={setShow}
+              setStatus={setStatus}
+            />
+          ) : (
+            <DepositMsg
+              setTitle={setTitle}
+              setShow={setShow}
+              setStatus={setStatus}
+            />
+          )
         ) : (
-          <DepositLogin setTitle={setTitle} setShow={setShow} setStatus={setStatus}/>
+          <DepositLogin
+            setTitle={setTitle}
+            setShow={setShow}
+            setStatus={setStatus}
+          />
         )
       }
     />
@@ -29,7 +45,7 @@ function Deposit() {
 function DepositMsg(props) {
   return (
     <>
-      <h5>Success</h5>
+      <h5>Successfull Deposit!</h5>
       <button
         type="submit"
         className="btn btn-dark"
@@ -44,8 +60,8 @@ function DepositMsg(props) {
   );
 }
 
+
 function DepositForm(props) {
-  //const [email, setEmail] = React.useState("");
   const [amount, setAmount] = React.useState("");
   const { email } = React.useContext(AuthContext);
 
@@ -75,7 +91,6 @@ function DepositForm(props) {
         placeholder="Enter email"
         value={email}
         readOnly
-        //onChange={(e) => setEmail(e.currentTarget.value)}
       />
       <br />
       Amount

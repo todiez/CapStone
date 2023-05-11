@@ -1,77 +1,206 @@
-function Withdraw(){
-  const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');  
+// function Withdraw(){
+//   const [show, setShow]     = React.useState(true);
+//   const [status, setStatus] = React.useState('');
+
+//   return (
+//     <Card
+//       //bgcolor="success"
+//       bgcolor="light"
+//       txtcolor="black"
+//       header="Withdraw"
+//       status={status}
+//       body={show ?
+//         <WithdrawForm setShow={setShow} setStatus={setStatus}/> :
+//         <WithdrawMsg setShow={setShow} setStatus={setStatus}/>}
+//     />
+//   )
+// }
+
+// function WithdrawMsg(props){
+//   return(<>
+//     <h5>Success</h5>
+//     <button type="submit"
+//       className="btn btn-dark"
+//       onClick={() => {
+//         props.setShow(true);
+//         props.setStatus('');
+//       }}>
+//         Withdraw again
+//     </button>
+//   </>);
+// }
+
+// function WithdrawForm(props){
+//   const [email, setEmail]   = React.useState('');
+//   const [amount, setAmount] = React.useState('');
+
+//   function handle(){
+//     fetch(`/account/update/${email}/-${amount}`)
+//     .then(response => response.text())
+//     .then(text => {
+//         try {
+//             const data = JSON.parse(text);
+//             props.setStatus(JSON.stringify(data.value));
+//             props.setShow(false);
+//             console.log('JSON:', data);
+//         } catch(err) {
+//             props.setStatus('Deposit failed')
+//             console.log('err:', text);
+//         }
+//     });
+//   }
+
+//   return(<>
+
+//     Email<br/>
+//     <input type="input"
+//       className="form-control"
+//       placeholder="Enter email"
+//       value={email}
+//       onChange={e => setEmail(e.currentTarget.value)}/><br/>
+
+//     Amount<br/>
+//     <input type="number"
+//       className="form-control"
+//       placeholder="Enter amount"
+//       value={amount}
+//       onChange={e => setAmount(e.currentTarget.value)}/><br/>
+
+//     <button type="submit"
+//       className="btn btn-dark"
+//       onClick={handle}>
+//         Withdraw
+//     </button>
+
+//   </>);
+// }
+
+//------------------------------------------
+function Withdraw() {
+  const [show, setShow] = React.useState(true);
+  const [title, setTitle] = React.useState("Please Login first!");
+  const [status, setStatus] = React.useState("");
+
+  const { isLoggedIn } = React.useContext(AuthContext);
+
+  React.useEffect(() => {
+    if (isLoggedIn == true) setTitle("");
+  }, []);
 
   return (
     <Card
-      //bgcolor="success"
       bgcolor="light"
       txtcolor="black"
       header="Withdraw"
-      status={status}
-      body={show ? 
-        <WithdrawForm setShow={setShow} setStatus={setStatus}/> :
-        <WithdrawMsg setShow={setShow} setStatus={setStatus}/>}
+      title={title}
+      body={
+        isLoggedIn ? (
+          show ? (
+            <WithdrawForm
+              setTitle={setTitle}
+              setShow={setShow}
+              setStatus={setStatus}
+            />
+          ) : (
+            <WithdrawMsg
+              setTitle={setTitle}
+              setShow={setShow}
+              setStatus={setStatus}
+            />
+          )
+        ) : (
+          <WithdrawLogin
+            setTitle={setTitle}
+            setShow={setShow}
+            setStatus={setStatus}
+          />
+        )
+      }
     />
-  )
+  );
 }
 
-function WithdrawMsg(props){
-  return(<>
-    <h5>Success</h5>
-    <button type="submit" 
-      className="btn btn-dark" 
-      onClick={() => {
-        props.setShow(true);
-        props.setStatus('');
-      }}>
+function WithdrawMsg(props) {
+  return (
+    <>
+      <h5>Successful Withdraw!</h5>
+      <button
+        type="submit"
+        className="btn btn-dark"
+        onClick={() => {
+          props.setShow(true);
+          props.setTitle("");
+        }}
+      >
         Withdraw again
-    </button>
-  </>);
+      </button>
+    </>
+  );
 }
 
-function WithdrawForm(props){
-  const [email, setEmail]   = React.useState('');
-  const [amount, setAmount] = React.useState('');
+function WithdrawForm(props) {
+  const [amount, setAmount] = React.useState("");
+  const { email } = React.useContext(AuthContext);
 
-  function handle(){
+  function handle() {
     fetch(`/account/update/${email}/-${amount}`)
-    .then(response => response.text())
-    .then(text => {
+      .then((response) => response.text())
+      .then((text) => {
         try {
-            const data = JSON.parse(text);
-            props.setStatus(JSON.stringify(data.value));
-            props.setShow(false);
-            console.log('JSON:', data);
-        } catch(err) {
-            props.setStatus('Deposit failed')
-            console.log('err:', text);
+          const data = JSON.parse(text);
+          props.setStatus(JSON.stringify(data.value));
+          props.setShow(false);
+          console.log("JSON:", data);
+        } catch (err) {
+          props.setStatus("Deposit failed");
+          console.log("err:", text);
         }
-    });
+      });
   }
 
-
-  return(<>
-
-    Email<br/>
-    <input type="input" 
-      className="form-control" 
-      placeholder="Enter email" 
-      value={email} 
-      onChange={e => setEmail(e.currentTarget.value)}/><br/>
-
-    Amount<br/>
-    <input type="number" 
-      className="form-control" 
-      placeholder="Enter amount" 
-      value={amount} 
-      onChange={e => setAmount(e.currentTarget.value)}/><br/>
-
-    <button type="submit" 
-      className="btn btn-dark" 
-      onClick={handle}>
+  return (
+    <>
+      Email
+      <br />
+      <input
+        type="input"
+        className="form-control"
+        placeholder="Enter email"
+        value={email}
+        readOnly
+      />
+      <br />
+      Amount
+      <br />
+      <input
+        type="number"
+        className="form-control"
+        placeholder="Enter amount"
+        value={amount}
+        onChange={(e) => setAmount(e.currentTarget.value)}
+      />
+      <br />
+      <button type="submit" className="btn btn-dark" onClick={handle}>
         Withdraw
-    </button>
+      </button>
+    </>
+  );
+}
 
-  </>);
+
+function WithdrawLogin(props) {
+  return (
+    <>
+      <button
+        type="button"
+        className="btn btn-dark"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = "./#/login/";
+        }}
+      >
+        Go to Login
+      </button>
+    </>
+  );
 }
