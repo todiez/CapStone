@@ -6,7 +6,9 @@ function Spa() {
   return (
     <HashRouter>
       <div>
-        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, id, setId, email, setEmail }}>
+        <AuthContext.Provider
+          value={{ isLoggedIn, setIsLoggedIn, id, setId, email, setEmail }}
+        >
           <NavBar />
           <div className="container" style={{ padding: "20px" }}>
             <Route path="/" exact component={Home} />
@@ -15,12 +17,11 @@ function Spa() {
             <Route path="/deposit/" component={Deposit} />
             <Route path="/withdraw/" component={Withdraw} />
             <Route path="/balance/" component={Balance} />
-            <Route path="/alldata/" component={AllData} />       
+            <Route path="/alldata/" component={AllData} />
             {/* <Route path="/logout/" component={Logout} />   */}
-
           </div>
         </AuthContext.Provider>
-      </div>      
+      </div>
     </HashRouter>
   );
 }

@@ -15,7 +15,7 @@ function Balance() {
       title={title}
       body={
         isLoggedIn ? (
-          <BalanceMsg setTitle={setTitle} setShow={setShow} />
+          <BalanceForm setTitle={setTitle} setShow={setShow} />
         ) : (
           <BalanceLogin setTitle={setTitle} setShow={setShow} />
         )
@@ -24,12 +24,10 @@ function Balance() {
   );
 }
 
-function BalanceMsg(props) {
-  const [emailLocal, setEmailLocal] = React.useState("");
+function BalanceForm(props) {
   const [balance, setBalance] = React.useState("");
-  const { isLoggedIn, id, email } = React.useContext(AuthContext);
-  console.log(email);
-
+  const { email } = React.useContext(AuthContext);
+ 
   function handle() {
     fetch(`/account/findOne/${email}`)
       .then((response) => response.text())
