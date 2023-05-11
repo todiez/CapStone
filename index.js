@@ -98,19 +98,6 @@ app.get('/account/all', function (req, res) {
     });
 });
 
-// Logout accounts
-app.get('/account/logout', function (req, res) {
-
-    console.log("inside logout on server")
-    dal.all().
-        then((docs) => {
-            console.log(docs);
-            res.send(docs);
-    });
-});
-
-
-
 app.listen(port, () => {
     console.log('Running on port: ' + port);
 });

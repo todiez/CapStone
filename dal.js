@@ -74,21 +74,5 @@ function all() {
     });
 }
 
-// return all users by using the collection.find method
-function logout() {
-    console.log("inside logout on DAL")
-
-    return new Promise((resolve, reject) => {
-        const customers = db
-            .collection('users')
-            .find({})
-            .toArray(function(err, docs) {
-                err ? reject(err) : resolve(docs);
-            });
-    });
-}
-
-
-
 
 module.exports = { create, findOne, find, update, all };

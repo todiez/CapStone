@@ -20,7 +20,6 @@ function Spa() {
             <Route path="/balance/" component={Balance} />
             <Route path="/logout/" component={LoggOut} />
             {/* <Route path="/bankingservices/" component={BankingServices} /> */}
-            {/* <Route path="/logout/" component={Logout} />   */}
           </div>
         </AuthContext.Provider>
       </div>
