@@ -2,7 +2,6 @@ function Deposit() {
   const [show, setShow] = React.useState(true);
   const [title, setTitle] = React.useState("Please Login first!");
   const [status, setStatus] = React.useState("");
-
   const { isLoggedIn } = React.useContext(AuthContext);
 
   React.useEffect(() => {
@@ -59,7 +58,6 @@ function DepositMsg(props) {
     </>
   );
 }
-
 
 function DepositForm(props) {
   const [amount, setAmount] = React.useState("");
