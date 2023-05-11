@@ -2,6 +2,7 @@ function Spa() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [id, setId] = React.useState(null);
   const [email, setEmail] = React.useState("");
+  
 
   return (
     <HashRouter>
@@ -17,7 +18,8 @@ function Spa() {
             <Route path="/deposit/" component={Deposit} />
             <Route path="/withdraw/" component={Withdraw} />
             <Route path="/balance/" component={Balance} />
-            <Route path="/alldata/" component={AllData} />
+            <Route path="/logout/" component={LoggOut} />
+            {/* <Route path="/bankingservices/" component={BankingServices} /> */}
             {/* <Route path="/logout/" component={Logout} />   */}
           </div>
         </AuthContext.Provider>

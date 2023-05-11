@@ -60,11 +60,11 @@ function NavBar(){
                 <a className="nav-link" href="#/balance/">Balance</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#/alldata/">Logout</a>
-              </li>  
-              <li className="nav-item">
                 <a className="nav-link" href="#/logout/">Logout</a>
               </li>  
+              {/* <li className="nav-item">
+                <a className="nav-link" href="#/bankingservices/">Service</a>
+              </li>   */}
             </ul>
           </div>
           <div>{<Logincorner isLoggedIn={isLoggedIn}/>}</div>

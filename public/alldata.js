@@ -1,4 +1,4 @@
-function AllData() {
+function LoggOut() {
   const { isLoggedIn, setIsLoggedIn } = React.useContext(AuthContext);
 
   console.log(isLoggedIn);
@@ -6,18 +6,11 @@ function AllData() {
   function logout() {
     setIsLoggedIn(false);
   }
+  logout();
 
   return (
     <>
-      <div>
-        {isLoggedIn ? (
-          <button type="submit" className="btn btn-dark" onClick={logout}>
-            Logout
-          </button>
-        ) : (
-          <h3>successfully logged out</h3>
-        )}
-      </div>
+      <h3>successfully logged out</h3>
     </>
   );
 }
