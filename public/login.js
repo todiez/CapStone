@@ -129,7 +129,7 @@ function LoginMsg(props) {
       <h5>Success</h5>
       <button
         type="submit"
-        className="btn btn-light"
+        className="btn btn-dark"
         onClick={() => props.setShow(true)}
       >
         Authenticate again

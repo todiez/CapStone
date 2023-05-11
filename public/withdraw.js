@@ -20,7 +20,7 @@ function WithdrawMsg(props){
   return(<>
     <h5>Success</h5>
     <button type="submit" 
-      className="btn btn-light" 
+      className="btn btn-dark" 
       onClick={() => {
         props.setShow(true);
         props.setStatus('');
@@ -68,7 +68,7 @@ function WithdrawForm(props){
       onChange={e => setAmount(e.currentTarget.value)}/><br/>
 
     <button type="submit" 
-      className="btn btn-light" 
+      className="btn btn-dark" 
       onClick={handle}>
         Withdraw
     </button>
