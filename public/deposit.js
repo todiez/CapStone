@@ -12,7 +12,13 @@ function Deposit() {
     <Card
       bgcolor="light"
       txtcolor="black"
-      header="Deposit"
+      header={
+        <>
+          <>Deposit</>
+          <br />
+          <>Current Balance: {CurrentBalance()}</>
+        </>
+      }
       title={title}
       body={
         isLoggedIn ? (
@@ -68,7 +74,7 @@ function DepositForm(props) {
       alert("Please enter a positive amount.");
       return;
     }
-    
+
     fetch(`/account/update/${email}/${amount}`)
       .then((response) => response.text())
       .then((text) => {
@@ -128,4 +134,26 @@ function DepositLogin(props) {
       </button>
     </>
   );
+}
+
+function CurrentBalance(props) {
+  const [balance, setBalance] = React.useState("");
+  const { email, isLoggedIn } = React.useContext(AuthContext);
+
+  function getBalance() {
+    fetch(`/account/findOne/${email}`)
+      .then((response) => response.text())
+      .then((text) => {
+        try {
+          const data = JSON.parse(text);
+          console.log(data.balance);
+          setBalance("USD " + data.balance);
+        } catch (err) {
+          console.log("err:", text);
+        }
+      });
+  }
+  getBalance();
+
+   return <>{balance}</>;
 }

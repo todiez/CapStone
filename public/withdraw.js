@@ -12,7 +12,13 @@ function Withdraw() {
     <Card
       bgcolor="light"
       txtcolor="black"
-      header="Withdraw"
+      header={
+        <>
+          <>Withdraw</>
+          <br />
+          <>Current Balance: {CurrentBalance()}</>
+        </>
+      }
       title={title}
       body={
         isLoggedIn ? (

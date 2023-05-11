@@ -4,9 +4,11 @@ function LoggOut() {
   console.log(isLoggedIn);
 
   function logout() {
-    setIsLoggedIn(false);
+    setIsLoggedIn(false);    
   }
   logout();
+
+  
 
   return (
     <>
