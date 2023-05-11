@@ -16,7 +16,7 @@ function Withdraw() {
         <>
           <>Withdraw</>
           <br />
-          <>Current Balance: {CurrentBalance()}</>
+          {isLoggedIn && <>Current Balance: {CurrentBalance()}</>}
         </>
       }
       title={title}

@@ -16,7 +16,7 @@ function Deposit() {
         <>
           <>Deposit</>
           <br />
-          <>Current Balance: {CurrentBalance()}</>
+          {isLoggedIn && <>Current Balance: {CurrentBalance()}</>}
         </>
       }
       title={title}
