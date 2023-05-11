@@ -1,11 +1,8 @@
 function Balance() {
   const [show, setShow] = React.useState(true);
   const [title, setTitle] = React.useState("Please Login first!");
-  const { isLoggedIn, id } = React.useContext(AuthContext);
-
-  console.log(isLoggedIn);
-  console.log(id);
-
+  const { isLoggedIn } = React.useContext(AuthContext);
+  
   React.useEffect(() => {
     if (isLoggedIn == true) setTitle("");
   }, []);
@@ -28,23 +25,22 @@ function Balance() {
 }
 
 function BalanceMsg(props) {
-  const [email, setEmail] = React.useState("");
+  const [emailLocal, setEmailLocal] = React.useState("");
   const [balance, setBalance] = React.useState("");
+  const { isLoggedIn, id, email } = React.useContext(AuthContext);
+  console.log(email);
 
   function handle() {
     fetch(`/account/findOne/${email}`)
       .then((response) => response.text())
       .then((text) => {
         try {
-          console.log("inside TRY");
           const data = JSON.parse(text);
           props.setShow(false);
           console.log(data.balance);
           setBalance(data.balance);
           props.setTitle("USD " + data.balance);
-          console.log("JSON:", data);
         } catch (err) {
-          console.log("inside CATCH");
           props.setTitle(
             "User not found, please make sure you have entered the correct email address! Thank you."
           );
@@ -61,8 +57,8 @@ function BalanceMsg(props) {
         type="input"
         className="form-control"
         placeholder="Enter email"
-        value={email}
-        onChange={(e) => setEmail(e.currentTarget.value)}
+        value={email}  
+        readOnly     
       />
       <br />
       <button type="submit" className="btn btn-dark" onClick={handle}>

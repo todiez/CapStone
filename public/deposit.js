@@ -1,6 +1,12 @@
 function Deposit(){
   const [show, setShow]     = React.useState(true);
-  const [status, setStatus] = React.useState('');  
+  const [status, setStatus] = React.useState('Please Login first!');  
+
+  const { isLoggedIn } = React.useContext(AuthContext);
+  
+  React.useEffect(() => {
+    if (isLoggedIn == true) setStatus("");
+  }, []);
 
   return (
     <Card

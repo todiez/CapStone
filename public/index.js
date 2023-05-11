@@ -1,11 +1,12 @@
 function Spa() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [id, setId] = React.useState(null);
+  const [email, setEmail] = React.useState("");
 
   return (
     <HashRouter>
       <div>
-        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, id, setId }}>
+        <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, id, setId, email, setEmail }}>
           <NavBar />
           <div className="container" style={{ padding: "20px" }}>
             <Route path="/" exact component={Home} />

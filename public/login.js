@@ -139,18 +139,17 @@ function LoginMsg(props) {
 }
 
 function LoginForm(props) {
-  const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
-  const { setIsLoggedIn, setId } = React.useContext(AuthContext);
+  const { setIsLoggedIn, setId, email, setEmail } = React.useContext(AuthContext);
 
   function handle() {
+    console.log(email);
     fetch(`/account/login/${email}/${password}`)
       .then((response) => response.text())
       .then((text) => {
         try {
           const data = JSON.parse(text);
-          setId(data.email);
+          setId(data._id);
           props.setStatus("");
           props.setShow(false);
           setIsLoggedIn(true); // Set isLoggedIn to true
