@@ -142,7 +142,7 @@ function LoginForm(props) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const { setIsLoggedIn } = React.useContext(AuthContext);
+  const { setIsLoggedIn, setId } = React.useContext(AuthContext);
 
   function handle() {
     fetch(`/account/login/${email}/${password}`)
@@ -150,12 +150,14 @@ function LoginForm(props) {
       .then((text) => {
         try {
           const data = JSON.parse(text);
+          setId(data.email);
           props.setStatus("");
           props.setShow(false);
           setIsLoggedIn(true); // Set isLoggedIn to true
         } catch (err) {
           props.setStatus(text);
           console.log("err:", text);
+          console.log(err);
         }
       });
   }
