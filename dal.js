@@ -23,7 +23,7 @@ function create(name, email, password) {
     });
 }
 
-// find user account 
+// find user account for Login
 function find(email) {
     return new Promise((resolve, reject) => {
         const customers = db
