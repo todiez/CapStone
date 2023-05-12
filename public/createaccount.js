@@ -29,7 +29,26 @@ function CreateForm(props){
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
 
-   function handle() {
+  // function handle() {
+  //   // Email validation logic
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   if (!emailRegex.test(email)) {
+  //     alert("Invalid email address");
+  //     return;
+  //   }
+    
+   
+  //   const url = `/account/create/${name}/${email}/${password}`;
+  //   (async () => {      
+  //     var res = await fetch(url);
+  //     var data = await res.json();
+  //     console.log(data);
+  //   })();
+  //   props.setShow(false);
+  // }
+
+
+  async function handle() {
     // Email validation logic
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -38,14 +57,18 @@ function CreateForm(props){
     }
   
     const url = `/account/create/${name}/${email}/${password}`;
-    (async () => {
-      var res = await fetch(url);
-      var data = await res.json();
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
       console.log(data);
-    })();
+    } catch (error) {
+      alert("Email address is already in use");
+      return;
+    }
+    
     props.setShow(false);
   }
-  
+
   return (<>
 
     Name<br/>
