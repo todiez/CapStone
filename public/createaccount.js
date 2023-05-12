@@ -29,17 +29,23 @@ function CreateForm(props){
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  function handle(){
-    console.log(name,email,password);
+   function handle() {
+    // Email validation logic
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Invalid email address");
+      return;
+    }
+  
     const url = `/account/create/${name}/${email}/${password}`;
     (async () => {
-        var res  = await fetch(url);
-        var data = await res.json();    
-        console.log(data);        
+      var res = await fetch(url);
+      var data = await res.json();
+      console.log(data);
     })();
     props.setShow(false);
-  }    
-
+  }
+  
   return (<>
 
     Name<br/>
