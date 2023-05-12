@@ -12,7 +12,7 @@ function LoggOut() {
 
   return (
     <>
-      <h3>successfully logged out</h3>
+      <h5>Successfully logged out.</h5>
     </>
   );
 }
