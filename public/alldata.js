@@ -13,6 +13,7 @@ function LoggOut() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
       <h5>Successfully logged out.</h5>
+      <br/>
       <button
         type="button"
         className="btn btn-dark"
