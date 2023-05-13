@@ -90,11 +90,11 @@ function LoginForm(props) {
 }
 
 function Logincorner() {
-  const { isLoggedIn } = React.useContext(AuthContext);
+  const { isLoggedIn, email } = React.useContext(AuthContext);
 
   return (
     <>
-      {isLoggedIn ? <p>paz@diez.cc</p> : <p>Please log in first</p>}
+      {isLoggedIn ? <p>{email}</p> : <p>Please log in first</p>}
     </>
   );
 }
