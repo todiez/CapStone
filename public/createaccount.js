@@ -21,6 +21,17 @@ function CreateMsg(props){
     <button type="submit" 
       className="btn btn-dark" 
       onClick={() => props.setShow(true)}>Add another account</button>
+      <br/>
+      <button
+        type="button"
+        className="btn btn-dark"
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href = "./#/login/";
+        }}
+      >
+        Go to Login
+      </button>
   </>);
 }
 
@@ -29,25 +40,7 @@ function CreateForm(props){
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  // function handle() {
-  //   // Email validation logic
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   if (!emailRegex.test(email)) {
-  //     alert("Invalid email address");
-  //     return;
-  //   }
-    
-   
-  //   const url = `/account/create/${name}/${email}/${password}`;
-  //   (async () => {      
-  //     var res = await fetch(url);
-  //     var data = await res.json();
-  //     console.log(data);
-  //   })();
-  //   props.setShow(false);
-  // }
-
-
+ 
   async function handle() {
     // Email validation logic
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
