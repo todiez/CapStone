@@ -22,6 +22,7 @@ function CreateMsg(props){
       className="btn btn-dark" 
       onClick={() => props.setShow(true)}>Add another account</button>
       <br/>
+      <br/>
       <button
         type="button"
         className="btn btn-dark"
